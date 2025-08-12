@@ -1,0 +1,28 @@
+<template>
+    <div class="todos-container">
+        <TodoItem 
+        v-for="todo in $store.state.todos"
+        :key="todo.id"
+        :todo="todo"
+        />
+    </div>
+    <!-- componente pra fazer agrupamento de todas as todos-->
+</template>
+
+<script>
+import TodoItem from './TodoItem.vue'
+export default {
+    components: {
+        TodoItem
+    }
+}
+//ide storm faz o auto import
+</script>
+
+<style scoped>
+.todos-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+</style>
