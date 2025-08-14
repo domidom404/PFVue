@@ -1,15 +1,46 @@
 <template>
-     <form class="todo-form">
+     <form 
+     @submit.stop.prevent="addTodo"
+     class="todo-form"
+     >
                 <input
+                    v-model="title"
                     type="text"
                     class="todo-input"
                     placeholder="Adicione um novo item ..."
                 >
+                
                 <button type="submit" class="add-button">
                     ADICIONAR
                 </button>
+                {{ title }}
             </form>
 </template>
+
+<script>
+export default{
+    data(){
+        return{
+            title: '' //deixa vazio apos dar enter na todo
+        }
+    },
+
+    methods: {
+        addTodo() {
+            //validação pra nao ir to-do vazia caso user nao digite nd
+            if(!this.title) {
+                return false;
+            }
+            this.$store.dispatch('addTodo', {
+                title: this.title,
+                completed: false
+            }).finally(()=>{
+                this.title = ''
+            })
+        },
+    }
+}
+</script>
 
 <style scoped>
 .todo-form {

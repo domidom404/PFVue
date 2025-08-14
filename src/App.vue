@@ -2,8 +2,7 @@
     <div class="app-container">
         <div class="app-content">
           
-          <!--se colocar <template> aparece o conteudo direto, com <div> aparece o 'pai' tbm-->
-         <TodoSpinner v-if="loading" />  <!--so vai aparecer quando o ajax tiver em ação-->
+         <TodoSpinner v-if="loading" />
          
          <template v-else>
 
@@ -25,8 +24,6 @@ import TodoFormAdd from './components/TodoFormAdd.vue';
 import TodoItems from './components/TodoItems.vue';
 import TodoSpinner from './components/TodoSpinner.vue';
 
-import axios from 'axios'; 
-
 export default{
   name: 'App',
   components: { TodoEmpty, TodoItems, TodoFormAdd, TodoSpinner},
@@ -38,21 +35,13 @@ export default{
   },
 
   created(){
-    this.loading = true; //inicia loading
-    console.log('requisição para API...');
-
-    axios.get('http://localhost:3000/todos')
-      .then((response) => {
-        console.log('resposta da API/data');
-
-        this.$store.commit('storeTodos', response.data)
-        console.log('estado veux apos commit')
-      }) //ajax acontece aqui
-
-      .finally(() => {
-        this.loading = false; //finaliza loading
-        console.log('loading finalizado');
-      })
+    this.loading = true; 
+    
+    this.$store.dispatch('getTodos').finally(() => {
+      //quando a promise for resolvida, seta o loading para false
+      console.log('here') //garantir que ta indo ate aqui'
+      this.loading = false;
+    });  
   },
 
 }

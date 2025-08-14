@@ -1,19 +1,24 @@
 {
-  "posts": [
+  "todos": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "title": "Estudar javascript",
+      "completed": false
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": 2,
+      "title": "Estudar Vue",
+      "completed": false
+    },
+    {
+      "id": 3,
+      "title": "Estudar composition API",
+      "completed": false
+    },
+    {
+      "title": "Estudar tailwind",
+      "completed": false,
+      "id": 4
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
