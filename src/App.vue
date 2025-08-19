@@ -24,6 +24,8 @@ import TodoFormAdd from './components/TodoFormAdd.vue';
 import TodoItems from './components/TodoItems.vue';
 import TodoSpinner from './components/TodoSpinner.vue';
 
+import axios from 'axios';
+
 export default{
   name: 'App',
   components: { TodoEmpty, TodoItems, TodoFormAdd, TodoSpinner},
@@ -38,8 +40,7 @@ export default{
     this.loading = true; 
     
     this.$store.dispatch('getTodos').finally(() => {
-      //quando a promise for resolvida, seta o loading para false
-      console.log('here') //garantir que ta indo ate aqui'
+      console.log('here') 
       this.loading = false;
     });  
   },

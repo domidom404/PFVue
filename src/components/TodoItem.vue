@@ -2,7 +2,11 @@
     <div class="todo-item">
         <div class="todo-content">
             <div class="todo-checkbox">
-                <button :class="['check-btn', { 'completed': todo.completed }]">
+
+                <button 
+                :class="['check-btn', { 'completed': todo.completed }]"
+                @click="onCheckClick">
+
                     <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
@@ -11,13 +15,15 @@
 
             <div class="todo-input-wrapper">
                 <input
+                    v-model="title"
                     type="text"
                     placeholder="Digite a sua tarefa"
-                    :value="todo.title"
+                    value="title"
                     :class="['todo-input', { 'completed-text': todo.completed }]"
+                    @keyup.enter="onTitleChange" 
                 >
             </div>
-
+<!-- keyup.enter dispara uma tecla do teclado, no caso quando for enter-->
             <div class="todo-actions">
                 <button class="delete-btn">
                     <svg class="delete-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -36,6 +42,41 @@ export default {
          type: Object,
          default: () => ({}),
       },
+   },
+
+   data() {
+    return{
+        title: this.todo.title,
+        isCompleted: this.todo.completed //informa se a todo esta completa ou nao
+        //nao esta aparecendo na tela pois julguei poluir visualmente
+    }
+   },
+
+   methods: {
+    onTitleChange() {
+        if(!this.title){
+            return 
+        }
+//impede de salvar se o texto estiver vazio
+        this.updateTodo()
+    },
+        updateTodo(){
+            const payload = {
+            id: this.todo.id,
+            data: {
+                title: this.title,
+                completed: this.isCompleted //valor atual
+            }
+        }
+    
+        this.$store.dispatch('updateTodo', payload)
+        console.log($evt.target.value);
+    },
+
+    onCheckClick() {
+    this.isCompleted = !this.isCompleted //inverte o estado do botao check
+    this.updateTodo() //salva
+    },
    },
 }
 </script>
@@ -64,7 +105,6 @@ export default {
 .check-btn {
     background: none;
     border: none;
-    color: #10b981;
     cursor: pointer;
     padding: 2px;
     transition: color 0.2s;
@@ -74,6 +114,12 @@ export default {
     color: #059669;
 }
 
+/* Cinza quando NÃO completado */
+.check-btn {
+    color: #6b7280;
+}
+
+/* Verde quando completado */
 .check-btn.completed {
     color: #10b981;
 }
