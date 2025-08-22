@@ -13,7 +13,6 @@
                 <button type="submit" class="add-button">
                     ADICIONAR
                 </button>
-                {{ title }}
             </form>
 </template>
 
@@ -21,21 +20,19 @@
 export default{
     data(){
         return{
-            title: '' //deixa vazio apos dar enter na todo
+            title: '' 
         }
     },
 
     methods: {
         addTodo() {
-            //validação pra nao ir to-do vazia caso user nao digite nd
             if(!this.title) {
                 return false;
             }
+
             this.$store.dispatch('addTodo', {
                 title: this.title,
-                completed: false
-            }).finally(()=>{
-                this.title = ''
+                completed: false 
             })
         },
     }
