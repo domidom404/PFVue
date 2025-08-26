@@ -7,7 +7,7 @@
          <template v-else>
 
          <TodoFormAdd />
-<!--garante que mensagem de vazio so aparece quando realmente estiver sem itens-->
+         
          <TodoItems v-if="$store.state.todos.length" />
 
          <TodoEmpty v-else />

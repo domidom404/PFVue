@@ -1,21 +1,35 @@
 <template>
     <div class="spinner-container">
         <img 
-        src="" 
-        alt=""
-        class="spinner-icon"
-        >
+          :src="spinnerImage" 
+          alt="Loading..." 
+          class="spinner" 
+        />
+        <p>Carregando...</p>
     </div>
 </template>
 
+<script>
+import spinnerImage from '../assets/img/spinner.svg'
+
+export default {
+  data() {
+    return {
+      spinnerImage
+    }
+  }
+}
+</script>
+
 <style scoped>
-.spinner-container {
-    text-align: center;
+.spinner {
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
 }
 
-.spinner-icon {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 </style>

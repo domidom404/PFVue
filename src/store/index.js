@@ -26,9 +26,9 @@ export default createStore({
       console.log(index);
        
   },
-//apagar item
+
   deleteTodo(state, id) {
-    const index = state.todos.findIndex(todo => todo.id === id)//pesquisar indice
+    const index = state.todos.findIndex(todo => todo.id === id)
 
     if(index >= 0){
       state.todos.splice(index, 1)
@@ -68,7 +68,7 @@ export default createStore({
 
     deleteTodo( { commit }, id) {
       return axios.delete(`http://localhost:3000/todos/${id}`).then(() => {
-        commit('deleteTodo', id) //repassar o id da todo que sera deletado
+        commit('deleteTodo', id) 
       })
 
     }

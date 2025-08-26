@@ -6,7 +6,6 @@
         :todo="todo"
         />
     </div>
-    <!-- componente pra fazer agrupamento de todas as todos-->
 </template>
 
 <script>
@@ -16,7 +15,6 @@ export default {
         TodoItem
     }
 }
-//ide storm faz o auto import
 </script>
 
 <style scoped>

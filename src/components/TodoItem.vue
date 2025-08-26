@@ -23,7 +23,6 @@
                     @keyup.enter="onTitleChange" 
                 >
             </div>
-<!-- keyup.enter dispara uma tecla do teclado, no caso quando for enter-->
             <div class="todo-actions">
                 <button 
                 class="delete-btn"
@@ -119,12 +118,10 @@ export default {
     color: #059669;
 }
 
-/* Cinza quando NÃO completado */
 .check-btn {
     color: #6b7280;
 }
 
-/* Verde quando completado */
 .check-btn.completed {
     color: #10b981;
 }

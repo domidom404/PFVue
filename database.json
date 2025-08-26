@@ -1,24 +1,19 @@
 {
   "todos": [
     {
-      "id": 1,
-      "title": "Estudar javascript",
-      "completed": false
-    },
-    {
-      "id": 2,
-      "title": "Estudar Vue",
-      "completed": false
-    },
-    {
-      "id": 3,
-      "title": "Estudar composition API",
-      "completed": false
-    },
-    {
-      "title": "Estudar tailwind",
+      "title": "Estudar Tailwind",
       "completed": false,
-      "id": 4
+      "id": 1
+    },
+    {
+      "title": "Beber água",
+      "completed": false,
+      "id": 2
+    },
+    {
+      "title": "Pegar Sol",
+      "completed": false,
+      "id": 3
     }
   ]
 }
